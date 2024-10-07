@@ -3,7 +3,7 @@ package com.gsd.algorithms.datastructures.balancedtree;
 import org.junit.jupiter.api.*;
 
 import static com.google.common.truth.Truth.assertThat;
-
+@DisplayName("Vanessa's test")
 public class TreapTreeTest {
 
     private TreapTree<Integer> treap;
