@@ -4,15 +4,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringSetTest {
 
     StringSet stringSet;
+    int hashCount;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         stringSet = new StringSet(127);  // Initialize with max string length of 127
+
+        // Use reflection to access the private N_HASHES field in StringSet
+        Field nHashesField = StringSet.class.getDeclaredField("N_HASHES");
+        nHashesField.setAccessible(true);
+        hashCount = nHashesField.getInt(stringSet);
     }
 
     @Test
@@ -24,7 +32,7 @@ class StringSetTest {
 
         // Remove the rightmost character manually from the hash
         long[] expectedHashes = originalHashes.clone();
-        for (int k = 0; k < stringSet.N_HASHES; k++) {
+        for (int k = 0; k < hashCount; k++) {
             expectedHashes[k] = stringSet.removeRight(expectedHashes[k], rightChar, k);
         }
 
@@ -43,7 +51,7 @@ class StringSetTest {
 
         // Remove the leftmost character manually from the hash
         long[] expectedHashes = originalHashes.clone();
-        for (int k = 0; k < stringSet.N_HASHES; k++) {
+        for (int k = 0; k < hashCount; k++) {
             expectedHashes[k] = stringSet.removeLeft(expectedHashes[k], leftChar, k, len);
         }
 
