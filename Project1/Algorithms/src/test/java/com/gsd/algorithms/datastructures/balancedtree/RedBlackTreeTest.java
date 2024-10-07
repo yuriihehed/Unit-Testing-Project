@@ -11,6 +11,7 @@ public class RedBlackTreeTest {
     public void setup(){
         rbt = new RedBlackTree<>();
     }
+    
     @Test
     @DisplayName("We want to test for the height of an empty tree")
     void testForEmptyTree(){ 
