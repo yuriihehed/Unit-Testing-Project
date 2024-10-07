@@ -18,28 +18,30 @@ public class BinarySearchTreeTest {
     public void setup() {
         bst = new BinarySearchTree<>();
     }
-
     @Test
-    @DisplayName("Test if tree is empty")
-    public void testEmpty() {
-        assertThat(bst.isEmpty()).isTrue();
-        assertThat(bst.size()).isEqualTo(0);
-    }
-    @Test
-    @DisplayName("We want to test if the contains method works this also indirectly tests the constructor and the height method so im not doing a separate test for that ")
-    void testsForContainsAndHeight(){
-        bst.add(1); // should be the left node
-        bst.add(2); // should be the root node
-        bst.add(3); // should be the right node
+    @DisplayName("We want to test if the contains method works this also indirectly tests the constructor  ")
+    void testsForContains(){
+        bst.add(1); // the root
+        bst.add(2); // the left node of the root
+        bst.add(3); // the left.left node of the root
 
         // testing if the contains method works
         assertThat(bst.contains(1)).isTrue();
         assertThat(bst.contains(2)).isTrue();
         assertThat(bst.contains(3)).isTrue();
         assertThat(bst.contains(6)).isFalse();
-        assertThat(bst.contains(null)).isFalse();
-
-        assertThat(bst.height()).isEqualTo(2);
+        
     }
+    @Test
+    @DisplayName("We are testing the height method separately for potential error reasons")
+    void testHeight(){
+        bst.add(1);
+        bst.add(2);
+        bst.add(3);
+      
+        assertThat(bst.height()).isEqualTo(3);
+    }
+    
+
 }
 

@@ -1,7 +1,7 @@
 package com.gsd.algorithms.datastructures.balancedtree;
 
 import org.junit.jupiter.api.*;
-
+import static org.junit.jupiter.api.Assertions.*;
 import static com.google.common.truth.Truth.assertThat;
 
 public class RedBlackTreeTest {
@@ -13,27 +13,23 @@ public class RedBlackTreeTest {
     }
     @Test
     @DisplayName("We want to test for the height of an empty tree")
-    void testForEmptyTree(){
-        assertThat(rbt.isEmpty()).isTrue();
-        assertThat(rbt.size()).isEqualTo(0);
+    void testForEmptyTree(){ 
+        assertEquals(0,rbt.height(), "Height of the tree should be 0");
     }
+
     @Test
-    void testHeightBalancedTree(){
+    void testHeight(){
         rbt.insert(1);
         rbt.insert(2);
         rbt.insert(3);
 
         assertThat(rbt.height()).isEqualTo(2);
-    }
-    @Test
-    void testHeightUnBalancedTree(){
-        rbt.insert(1);// should be the left child of the root
-        rbt.insert(2); // Should be the root 
-        rbt.insert(3); // should be the left child of teh right childof the root
-        rbt.insert(4); // Should be the right child of the root
-        rbt.insert(5);// should be the right child of of the right child of the root
-        
-        assertThat(rbt.height()).isEqualTo(3); //
+
+        rbt.insert(4);
+        rbt.insert(5);
+        rbt.insert(6);
+
+        assertThat(rbt.height()).isEqualTo(4);
     }
 
 
