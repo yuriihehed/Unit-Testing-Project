@@ -9,7 +9,7 @@ import static com.google.common.truth.Truth.assertThat;
 2.  com.gsd.algorithms.datastructures.binarysearchtree.BinarySearchTree.contains(T)
 3.com.gsd.algorithms.datastructures.binarysearchtree.BinarySearchTree.height()
  */
-@DisplayName("Vanessa's TestClass")
+@DisplayName("Vanessa's Test")
 public class BinarySearchTreeTest {
 
     private BinarySearchTree<Integer> bst;
