@@ -3,13 +3,17 @@ package com.gsd.algorithms.datastructures.binarysearchtree;
 import org.junit.jupiter.api.*;
 
 import static com.google.common.truth.Truth.assertThat;
-/*  What im responsible for testing
 
+/*  What Vanessa is responsible for testing
 1. com.gsd.algorithms.datastructures.binarysearchtree.BinarySearchTree.Node.Node(Node,Node,T)
 2.  com.gsd.algorithms.datastructures.binarysearchtree.BinarySearchTree.contains(T)
 3.com.gsd.algorithms.datastructures.binarysearchtree.BinarySearchTree.height()
  */
-@DisplayName("Vanessa's Test")
+
+/*  What Myo is responsible for testing
+1. com.gsd.algorithms.datastructures.binarysearchtree.BinarySearchTree.add(Node,T)
+*/
+
 public class BinarySearchTreeTest {
 
     private BinarySearchTree<Integer> bst;
@@ -18,6 +22,12 @@ public class BinarySearchTreeTest {
     public void setup() {
         bst = new BinarySearchTree<>();
     }
+    
+    @AfterEach
+    void tearDown() {
+        bst = null;
+    }
+    
     @Test
     @DisplayName("We want to test if the contains method works this also indirectly tests the constructor  ")
     void testsForContains(){
@@ -42,6 +52,30 @@ public class BinarySearchTreeTest {
         assertThat(bst.height()).isEqualTo(3);
     }
     
+    @Test
+    @DisplayName("Test Add to empty tree")
+    public void testAddToEmptyTree() {
+        assertThat(bst.add(5)).isTrue();
+    }
 
+    @Test
+    @DisplayName("Test Add duplicate element")
+    public void testAddDuplicateElement() {
+        bst.add(5);
+        assertThat(bst.add(5)).isFalse();
+    }
+
+    @Test
+    @DisplayName("Test Add to left tree")
+    public void testAddLeftTree() {
+        bst.add(5);
+        assertThat(bst.add(1)).isTrue();
+    }
+
+    @Test
+    @DisplayName("Test Add to right tree")
+    public void testAddRightTree() {
+        bst.add(5);
+        assertThat(bst.add(7)).isTrue();
+    }
 }
-
