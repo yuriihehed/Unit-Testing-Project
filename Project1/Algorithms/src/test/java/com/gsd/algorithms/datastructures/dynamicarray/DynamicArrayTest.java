@@ -23,7 +23,7 @@ public class DynamicArrayTest {
     }
 
     @Test
-    @DisplayName("Test Add to array with capacity zero")
+    @DisplayName("Myo - Test Add to array with capacity zero")
     public void testAddWithCapacityZero() {
         DynamicArray<Integer> da = new DynamicArray<>(0);
         da.add(0);
@@ -31,7 +31,7 @@ public class DynamicArrayTest {
     }
 
     @Test
-    @DisplayName("Test Add to array with capacity one")
+    @DisplayName("Myo - Test Add to array with capacity one")
     public void testAddWithCapacityOne() {
         DynamicArray<Integer> da = new DynamicArray<>(1);
         da.add(0);
@@ -40,7 +40,7 @@ public class DynamicArrayTest {
     }
 
     @Test
-    @DisplayName("Test Add to array with standard capacity of 16")
+    @DisplayName("Myo - Test Add to array with standard capacity of 16")
     public void testAddWithStandardCapacity() {
         DynamicArray<Integer> da = new DynamicArray<>();
         da.add(0);
