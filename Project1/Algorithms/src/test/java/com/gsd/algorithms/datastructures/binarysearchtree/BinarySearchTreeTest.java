@@ -53,27 +53,27 @@ public class BinarySearchTreeTest {
     }
     
     @Test
-    @DisplayName("Test Add to empty tree")
+    @DisplayName("Myo - Test Add to empty tree")
     public void testAddToEmptyTree() {
         assertThat(bst.add(5)).isTrue();
     }
 
     @Test
-    @DisplayName("Test Add duplicate element")
+    @DisplayName("Myo - Test Add duplicate element")
     public void testAddDuplicateElement() {
         bst.add(5);
         assertThat(bst.add(5)).isFalse();
     }
 
     @Test
-    @DisplayName("Test Add to left tree")
+    @DisplayName("Myo - Test Add to left tree")
     public void testAddLeftTree() {
         bst.add(5);
         assertThat(bst.add(1)).isTrue();
     }
 
     @Test
-    @DisplayName("Test Add to right tree")
+    @DisplayName("Myo - Test Add to right tree")
     public void testAddRightTree() {
         bst.add(5);
         assertThat(bst.add(7)).isTrue();
