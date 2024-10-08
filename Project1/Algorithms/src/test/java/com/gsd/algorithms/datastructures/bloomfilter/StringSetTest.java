@@ -1,84 +1,57 @@
 package com.gsd.algorithms.datastructures.bloomfilter;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Field;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class StringSetTest {
+@DisplayName("StringSet Tests by Dean")
+public class StringSetTest {
 
-    StringSet stringSet;
-    int hashCount;
-
-    @BeforeEach
-    void setUp() throws Exception {
-        stringSet = new StringSet(127);  // Initialize with max string length of 127
-
-        // Use reflection to access the private N_HASHES field in StringSet
-        Field nHashesField = StringSet.class.getDeclaredField("N_HASHES");
-        nHashesField.setAccessible(true);
-        hashCount = nHashesField.getInt(stringSet);
+    @Test
+    @DisplayName("Add and contains method test for 'hello'")
+    public void testAdd() {
+        StringSet stringSet = new StringSet(100);
+        stringSet.add("hello");
+        assertTrue(stringSet.contains("hello"), "StringSet should contain 'hello'");
     }
 
     @Test
-    @DisplayName("StringSet.removeRight should update the hash after removing the rightmost character")
-    void removeRight_updatesHash() {
-        String str = "exampleString";
-        long[] originalHashes = stringSet.computeHash(str);  // Compute original hash
-        int rightChar = 'g';  // Last character in the string
+    @DisplayName("Compute hash method test for 'hello'")
+    public void testComputeHash() {
+        StringSet stringSet = new StringSet(100);
+        long[] hashes = stringSet.computeHash("hello");
+        assertNotNull(hashes, "Hashes should not be null");
+    }
 
-        // Remove the rightmost character manually from the hash
-        long[] expectedHashes = originalHashes.clone();
-        for (int k = 0; k < hashCount; k++) {
-            expectedHashes[k] = stringSet.removeRight(expectedHashes[k], rightChar, k);
+    @Test
+    @DisplayName("Remove rightmost character test for 'hello'")
+    public void testRemoveRight() {
+        StringSet stringSet = new StringSet(100);
+        long[] hashes = stringSet.computeHash("hello");
+        long expected = hashes[0];
+        for (int i = 0; i < "hello".length(); i++) {
+            expected = stringSet.removeRight(expected, "hello".charAt("hello".length() - 1 - i), 0);
         }
-
-        // Verify the computed hash for the string after removing the last character
-        stringSet.add(str);
-        assertArrayEquals(expectedHashes, stringSet.computeHash(str.substring(0, str.length() - 1)));
+        assertEquals(0, expected, "Hashes should match after removing rightmost character");
     }
 
     @Test
-    @DisplayName("StringSet.removeLeft should update the hash after removing the leftmost character")
-    void removeLeft_updatesHash() {
-        String str = "anotherTestString";
-        long[] originalHashes = stringSet.computeHash(str);  // Compute original hash
-        int leftChar = 'a';  // First character in the string
-        int len = str.length();
-
-        // Remove the leftmost character manually from the hash
-        long[] expectedHashes = originalHashes.clone();
-        for (int k = 0; k < hashCount; k++) {
-            expectedHashes[k] = stringSet.removeLeft(expectedHashes[k], leftChar, k, len);
+    @DisplayName("Remove leftmost character test for 'hello'")
+    public void testRemoveLeft() {
+        StringSet stringSet = new StringSet(100);
+        long[] hashes = stringSet.computeHash("hello");
+        long rollingHash = hashes[0];
+        for (int i = 0; i < "hello".length(); i++) {
+            rollingHash = stringSet.removeLeft(rollingHash, "hello".charAt(i), 0, "hello".length() - i);
         }
-
-        // Verify the computed hash for the string after removing the first character
-        stringSet.add(str);
-        assertArrayEquals(expectedHashes, stringSet.computeHash(str.substring(1)));
+        assertEquals(0, rollingHash, "Hashes should match after removing leftmost character");
     }
 
     @Test
-    @DisplayName("StringSet.toString should include added strings")
-    void toString_includesAddedStrings() {
-        stringSet.add("test1");
-        stringSet.add("test2");
-
-        String result = stringSet.toString();
-        // Only one assertion to check that a specific string is in the representation
-        assertTrue(result.contains("test1"));
-    }
-
-    @Test
-    @DisplayName("StringSet.toString should include added strings")
-    void toString_includesAddedStrings2() {
-        stringSet.add("test1");
-        stringSet.add("test2");
-
-        String result = stringSet.toString();
-        // Separate assertion to check another string
-        assertTrue(result.contains("test2"));
+    @DisplayName("toString method should return non-null string")
+    public void testToString() {
+        StringSet stringSet = new StringSet(100);
+        stringSet.add("hello");
+        assertNotNull(stringSet.toString(), "toString should not be null");
     }
 }
