@@ -13,7 +13,7 @@ public class TreapTreeTest {
         treap = new TreapTree<>();
     }
     @Test
-    @DisplayName("We want to test if the insert method works properly")
+    @DisplayName("Vanessa: test for insert")
     void testForInsert(){
         assertThat(treap.insert(1, 1)).isTrue(); // insert should be true for new elements 
         assertThat(treap.size()).isEqualTo(1); // the size should be 1 after we insert ((value)1,(priority)1)
