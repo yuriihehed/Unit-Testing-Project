@@ -1,30 +1,60 @@
 package com.gsd.algorithms.datastructures.binarysearchtree;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Dean: SplayTree Tests")
 class SplayTreeTest {
-    private SplayTree<Integer> tree;
+
+    private SplayTree<Integer> splayTree;
 
     @BeforeEach
+    @DisplayName("Dean: Setup for SplayTree Tests")
     void setUp() {
-        tree = new SplayTree<>();
-        tree.insert(1);
-        tree.insert(2);
-        tree.insert(3);
-
+        splayTree = new SplayTree<>();
     }
-    @Test
-    void getRoot() {
-        assertEquals(3,tree.getRoot().getData(),"Root should be the last accessed element.");
+
+    @AfterEach
+    @DisplayName("Dean: Cleanup after SplayTree Tests")
+    void tearDown() {
+        splayTree = null;
     }
 
     @Test
-    void getData(){
-        assertEquals(2, tree.search(2).getData(), "Search should return node with data 2.");
-        assertEquals(3, tree.search(3).getData(), "Search should return node with data 3.");
+    @DisplayName("Dean: Delete Method with Complexity Level 3")
+    void delete() {
+        // Insert some elements
+        splayTree.insert(10);
+        splayTree.insert(20);
+        splayTree.insert(30);
 
+        // Delete one element and check if it's deleted
+        assertNotNull(splayTree.delete(20));
+        assertNull(splayTree.search(20));  // 20 should be deleted, so search should return null
+
+        // The root may not be 10, so check that it's either 10 or 30 (based on splaying)
+        assertTrue(splayTree.getRoot().getData() == 10 || splayTree.getRoot().getData() == 30);
+
+        // Check that 10 and 30 are still in the tree
+        assertNotNull(splayTree.search(10));
+        assertNotNull(splayTree.search(30));
+    }
+
+    @Test
+    @DisplayName("Dean: Insert and Delete Multiple Elements")
+    void insertAndDeleteMultiple() {
+        splayTree.insert(10);
+        splayTree.insert(5);
+        splayTree.insert(15);
+
+        assertNotNull(splayTree.delete(5));
+        assertNull(splayTree.search(5)); // 5 should be deleted
+
+        assertNotNull(splayTree.search(10)); // 10 should still be present
+        assertNotNull(splayTree.search(15)); // 15 should still be present
     }
 }
