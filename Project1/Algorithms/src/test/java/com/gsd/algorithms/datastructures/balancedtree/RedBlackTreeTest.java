@@ -13,13 +13,13 @@ public class RedBlackTreeTest {
     }
     
     @Test
-    @DisplayName("Vanessa: test empty tree")
+    @DisplayName("Vanessa: test for an empty tree")
     void testForEmptyTree(){ 
         assertEquals(0,rbt.height(), "Height of the tree should be 0");
     }
 
     @Test
-    @DisplayName("Vanessa: testheight")
+    @DisplayName("Vanessa: test for the height")
     void testHeight(){
         rbt.insert(1);
         rbt.insert(2);
