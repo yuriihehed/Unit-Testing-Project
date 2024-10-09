@@ -29,7 +29,7 @@ public class BinarySearchTreeTest {
     }
     
     @Test
-    @DisplayName("Vanessa: We want to test if the contains method works this also indirectly tests the constructor  ")
+    @DisplayName("Vanessa:We want to test if the contains method works this also indirectly tests the constructor  ")
     void testsForContains(){
         bst.add(1); // the root
         bst.add(2); // the left node of the root
@@ -43,7 +43,7 @@ public class BinarySearchTreeTest {
         
     }
     @Test
-    @DisplayName("Vanessa: We are testing the height method separately for potential error reasons")
+    @DisplayName("Vanessa:We are testing the height method separately for potential error reasons")
     void testHeight(){
         bst.add(1);
         bst.add(2);
