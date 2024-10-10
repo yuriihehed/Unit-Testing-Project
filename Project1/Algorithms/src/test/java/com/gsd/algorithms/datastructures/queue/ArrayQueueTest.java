@@ -23,13 +23,13 @@ public class ArrayQueueTest {
     }
 
     @Test
-    @DisplayName("Test array queue is full")
+    @DisplayName("Myo - Test array queue is full")
     public void testQueueIsFull() {
         assertThat(queue.isFull()).isTrue();
     }
 
     @Test
-    @DisplayName("Test array queue is not full")
+    @DisplayName("Myo - Test array queue is not full")
     public void testFullQueueIsNotFull() {
         queue.poll();
 
@@ -37,13 +37,13 @@ public class ArrayQueueTest {
     }
 
     @Test
-    @DisplayName("Test array queue size")
+    @DisplayName("Myo - Test array queue size")
     public void testQueueSize() {
         assertThat(queue.size()).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("Test array queue peek when queue is empty. Throws RuntimeException.")
+    @DisplayName("Myo - Test array queue peek when queue is empty. Throws RuntimeException.")
     public void testPeekException() {
         queue.poll();
         queue.poll();
@@ -52,13 +52,13 @@ public class ArrayQueueTest {
     }
 
     @Test
-    @DisplayName("Test array queue peek first element")
+    @DisplayName("Myo - Test array queue peek first element")
     public void testPeekFirstElement() {
         assertThat(queue.peek()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("Test array queue peek last element")
+    @DisplayName("Myo - Test array queue peek last element")
     public void testPeekLastElement() {
         queue.poll();
         queue.poll();
