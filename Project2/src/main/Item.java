@@ -30,4 +30,9 @@ public class Item extends Node {
     public BucketProxy findBucket(String bucketName) {
         return null; // Placeholder for future implementation
     }
+
+
+    public void getBucket() {
+
+    }
 }

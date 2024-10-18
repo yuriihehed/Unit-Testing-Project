@@ -8,6 +8,12 @@ public class BucketController {
         return null; // Placeholder for future implementation
     }
 
+
+    public  void getBucketItems(String bucketName){
+        // Placeholder for future implementation
+    }
+
+
     public void addBucket(String bucketName) {
         // Placeholder for future implementation
     }
@@ -27,4 +33,28 @@ public class BucketController {
     public void removeItem(String itemName) {
         // Placeholder for future implementation
     }
+
+    public void addItemToBucket(String itemName, String bucketName) {
+        // Placeholder for future implementation
+    }
+
+    public Bucket getBuckets() {
+        // Placeholder for future implementation
+        return null;
+    }
+
+    public Item getItems() {
+        // Placeholder for future implementation
+        return null;
+    }
+
+    public void removeItemFromBucket(String itemName, String bucketName) {
+        // Placeholder for future implementation
+    }
+
+    public Bucket getBucketsForItem(String itemName) {
+        // Placeholder for future implementation
+        return null;
+    }
+
 }
