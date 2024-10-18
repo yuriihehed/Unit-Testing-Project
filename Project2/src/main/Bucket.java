@@ -19,6 +19,9 @@ public class Bucket extends Node {
         return null; // Placeholder for future implementation
     }
 
+    public ItemProxy getItem() {
+        return null;
+    }
     public void addItem(Item item) {
         // Placeholder for future implementation
     }
@@ -30,4 +33,5 @@ public class Bucket extends Node {
     public void clear() {
         // Placeholder for future implementation
     }
+
 }
