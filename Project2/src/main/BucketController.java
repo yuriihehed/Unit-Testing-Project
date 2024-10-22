@@ -15,9 +15,12 @@ public class BucketController {
     }
 
     public void getBucketItems(String bucketName) {
+        LinkedList<String> itemList = new LinkedList<>();
         BucketProxy bucketProxy = findBucket(bucketName);
         if (bucketProxy != null) {
-            System.out.println("Listing items for bucket: " + bucketName);
+            Bucket bucket = bucketProxy.getBase();
+            itemList = bucket.getItems();
+            System.out.println("Listing items for bucket: " + itemList);
         } else {
             System.out.println("Bucket not found: " + bucketName);
         }
