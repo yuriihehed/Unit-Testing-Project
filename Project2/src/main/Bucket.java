@@ -60,4 +60,14 @@ public class Bucket extends Node {
     public void clear() {
         firstItemProxy = null; 
     }
+
+    public LinkedList<String> getItems() {
+        LinkedList<String> list = new LinkedList<>();
+        ItemProxy curItem = firstItemProxy;
+        while (curItem != null) {
+            list.add(curItem.getName());
+            curItem = curItem.getNext();
+        }
+        return list;
+    }
 }
